@@ -42,7 +42,7 @@ set.clipboard = 'unnamedplus'
 set.confirm = true
 set.exrc = true
 set.backup = true
--- set.backupdir = '$HOME/.config/nvim/backup/'
+set.backupdir = vim.fn.stdpath('config') .. '/backup'
 set.updatetime = 300 -- Reduce time for highlighting other references
 set.redrawtime = 10000 -- Allow more time for loading syntax on large files
 -- Highlight current line
