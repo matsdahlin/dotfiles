@@ -1,4 +1,5 @@
 local set = vim.opt
+local let = vim.g
 
 vim.cmd[[language en_US]]
 set.fileencoding = 'utf-8'
@@ -50,7 +51,13 @@ set.cursorline = true
 set.visualbell = true
 set.autoindent = true
 
+set.visualbell = true
+set.autoindent = true
 
 -- set.spell = true
 -- set wildmode=longest:full,full
+
+-- TODO: Move this to mapppings lua-config
+let.mapleader = " "
+
 
