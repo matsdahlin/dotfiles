@@ -1,8 +1,9 @@
-
 local set = vim.opt
 
-vim.cmd 'language en_US'
+vim.cmd[[language en_US]]
 set.fileencoding = 'utf-8'
+
+vim.cmd[[colorscheme dracula]]
 
 set.expandtab = true
 -- set.smarttab = true
@@ -23,7 +24,7 @@ set.title = true
 
 -- search
 set.hlsearch = true
-set.incsearch = true 
+set.incsearch = true
 set.ignorecase = true
 set.smartcase = true
 set.showmatch = true
@@ -52,3 +53,4 @@ set.autoindent = true
 
 -- set.spell = true
 -- set wildmode=longest:full,full
+
