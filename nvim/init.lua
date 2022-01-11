@@ -1,2 +1,3 @@
 require('settings')
-require('packer-config')
+require('plugins')
+require('mappings')
