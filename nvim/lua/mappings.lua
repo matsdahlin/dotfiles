@@ -6,10 +6,10 @@ let.mapleader = " "
 
 -- clear search highlighting
 map('n', '<leader>k', ':nohl<CR>', default_opts)
-
+--
 -- fast saving with <leader> and s
 map('n', '<leader>s', ':w<cr>', default_opts)
-map('i', '<leader>s', '<c-c>:w<cr>', default_opts)
+--map('i', '<leader>s', '<c-c>:w<cr>', default_opts)
 
 -- move around splits using Ctrl + {h,j,k,l}
 map('n', '<C-h>', '<C-w>h', default_opts)
@@ -47,3 +47,13 @@ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts)  
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', default_opts)  
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts)  
+
+-- fugitive
+map('n', '<leader>ga', ':Git add %:p<CR><CR>', default_opts)
+map('n', '<leader>gs', ':Git<CR>', default_opts)
+map('n', '<leader>gc', ':Git commit<CR>', default_opts)
+map('n', '<leader>gd', ':Git diff<CR>', default_opts)
+map('n', '<leader>ge', ':Gedit<CR>', default_opts)
+map('n', '<leader>gb', ':Git branch<CR>', default_opts)
+map('n', '<leader>go', ':Git checkout<CR>', default_opts)
+map('n', '<leader>gds', ':Git! diff --staged<CR>', default_opts)

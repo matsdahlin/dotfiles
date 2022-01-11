@@ -30,16 +30,22 @@ return packer.startup(function(use)
     -- Editing
     use(require('plugins-config.autopairs'))
     use {'tpope/vim-surround'}
+    use(require('plugins-config.closetag'))
+    use(require('plugins-config.indent-blankline'))
 
     -- UI / Info
     use(require('plugins-config.lualine'))
-    use(require('plugins-config.gitsigns'))
     use(require('plugins-config.trouble'))
     use(require('plugins-config.todo-comments'))
 
+    -- Git
+    use(require('plugins-config.gitsigns'))
+    use {'tpope/vim-fugitive'}
+    use {'tpope/vim-rhubarb'}
+
     -- Navigation
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use(require('telescope'))
+    use(require('plugins-config.telescope'))
     use(require('plugins-config.nvim-treesitter'))
     use {
           'kyazdani42/nvim-tree.lua',

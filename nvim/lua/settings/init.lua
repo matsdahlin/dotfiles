@@ -7,10 +7,13 @@ vim.cmd[[colorscheme dracula]]
 
 set.expandtab = true
 -- set.smarttab = true
-
 set.shiftwidth = 2
 set.tabstop = 2
 set.softtabstop = 2
+
+-- set.autoindent = true
+-- set.smartindent  = true
+-- set.cindent = true -- like smartindent but stricter
 
 set.hidden = true
 -- number column
@@ -48,10 +51,10 @@ set.redrawtime = 10000 -- Allow more time for loading syntax on large files
 -- Highlight current line
 set.cursorline = true
 set.visualbell = true
-set.autoindent = true
 
 set.visualbell = true
-set.autoindent = true
 
 -- set.spell = true
 -- set wildmode=longest:full,full
+vim.cmd [[ highlight cursorline guibg=#242633 ]]
+vim.cmd [[ highlight cursorlinenr guibg=#242633 ]]
