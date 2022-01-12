@@ -26,6 +26,10 @@ return packer.startup(function(use)
     use {'dracula/vim', as = 'dracula'}
 
     -- LSP
+    use {
+        'neovim/nvim-lspconfig',
+        'williamboman/nvim-lsp-installer',
+    }
 
     -- Editing
     use(require('plugins-config.autopairs'))

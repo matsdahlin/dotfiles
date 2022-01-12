@@ -19,7 +19,10 @@ return {
       "html",
       "scss",
       "elm",
-      "lua"
+      "lua",
+      "graphql",
+      "css",
+      "svelte"
     },
   }
 
