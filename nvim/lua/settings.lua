@@ -54,6 +54,8 @@ set.visualbell = true
 
 set.visualbell = true
 
+set.completeopt = {'menuone', 'noinsert', 'noselect'}
+
 -- set.spell = true
 -- set wildmode=longest:full,full
 vim.cmd [[ highlight cursorline guibg=#242633 ]]

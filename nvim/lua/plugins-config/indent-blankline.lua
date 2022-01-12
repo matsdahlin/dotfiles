@@ -1,3 +1,7 @@
+local g = vim.api.nvim_set_var
+
+g('indent_blankline_enabled', 0)
+
 vim.cmd [[highlight IndentBlanklineIndent1 guibg=#282a36 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guibg=#22232e gui=nocombine]]
 
