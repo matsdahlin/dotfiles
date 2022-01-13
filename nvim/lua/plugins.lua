@@ -57,6 +57,7 @@ return packer.startup(function(use)
     use(require('plugins-config.trouble'))
     use(require('plugins-config.todo-comments'))
     use {'onsails/lspkind-nvim'}
+    use {'tpope/vim-commentary'}
 
     -- Git
     use(require('plugins-config.gitsigns'))
