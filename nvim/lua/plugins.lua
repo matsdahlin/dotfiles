@@ -24,12 +24,27 @@ return packer.startup(function(use)
 
     -- Themes
     use {'dracula/vim', as = 'dracula'}
+    vim.cmd([[
+      augroup DraculaOverrides
+        autocmd!
+        autocmd ColorScheme dracula highlight DraculaBoundary guibg=none
+        autocmd ColorScheme dracula highlight DraculaDiffDelete ctermbg=none guibg=none
+        autocmd ColorScheme dracula highlight DraculaComment cterm=italic gui=italic
+      augroup end
+    ]])
 
     -- LSP
+    use {'jose-elias-alvarez/null-ls.nvim'}
     use {
-        'neovim/nvim-lspconfig',
-        'williamboman/nvim-lsp-installer',
+      'neovim/nvim-lspconfig',
+      'williamboman/nvim-lsp-installer',
     }
+    use {'b0o/schemastore.nvim'}
+    use(require('plugins-config.nvim-cmp'))
+    use {'jose-elias-alvarez/nvim-lsp-ts-utils'}
+
+    -- Snippets
+    use {'dsznajder/vscode-es7-javascript-react-snippets'}
 
     -- Editing
     use(require('plugins-config.autopairs'))
@@ -41,11 +56,15 @@ return packer.startup(function(use)
     use(require('plugins-config.lualine'))
     use(require('plugins-config.trouble'))
     use(require('plugins-config.todo-comments'))
+    use {'onsails/lspkind-nvim'}
 
     -- Git
     use(require('plugins-config.gitsigns'))
     use {'tpope/vim-fugitive'}
     use {'tpope/vim-rhubarb'}
+
+    -- Testing
+    use(require('plugins-config.vim-test'))
 
     -- Navigation
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }

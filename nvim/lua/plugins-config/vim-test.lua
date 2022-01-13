@@ -1,8 +1,7 @@
 local let = vim.g
 
-let.test#strategy = "floaterm"
+let["test#strategy"] = 'neovim'
 
 return {
   'vim-test/vim-test'
 }
-

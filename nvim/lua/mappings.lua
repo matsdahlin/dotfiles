@@ -42,11 +42,16 @@ map('i', ',,', '<ESC>A,<ESC>', default_opts)
 map('n', '<leader>J', ':m .+1<CR>==', default_opts)
 map('n', '<leader>K', ':m .-2<CR>==', default_opts)
 
+-- nvim-cmp
+-- Use <Tab> and <S-Tab> to navigate through popup menu
+map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+
 -- telescope
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts)  
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts)  
-map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', default_opts)  
-map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts)  
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_opts)
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_opts)
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', default_opts)
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_opts)
 
 -- fugitive
 map('n', '<leader>ga', ':Git add %:p<CR><CR>', default_opts)
@@ -57,3 +62,10 @@ map('n', '<leader>ge', ':Gedit<CR>', default_opts)
 map('n', '<leader>gb', ':Git branch<CR>', default_opts)
 map('n', '<leader>go', ':Git checkout<CR>', default_opts)
 map('n', '<leader>gds', ':Git! diff --staged<CR>', default_opts)
+
+-- vim-test
+map('n', '<leader>tn', ':TestNearest<CR>', default_opts)
+map('n', '<leader>tf', ':TestFile<CR>', default_opts)
+map('n', '<leader>ta', ':TestSuite<CR>', default_opts)
+map('n', '<leader>tl', ':TestLast<CR>', default_opts)
+map('n', '<leader>tv', ':TestVisit<CR>', default_opts)

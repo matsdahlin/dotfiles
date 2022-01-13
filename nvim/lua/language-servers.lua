@@ -17,7 +17,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>.', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
@@ -25,6 +25,11 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+
+  if client.resolved_capabilities.document_formatting then
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+  end
 end
 
 -- Include the servers you want to have installed by default below
@@ -49,6 +54,8 @@ for _, name in pairs(servers) do
   end
 end
 
+local cmp_capabilites = require('plugins-config.nvim-cmp-setup')
+
 local enhance_server_opts = {
   -- Provide settings that should only apply to the "eslintls" server
   ["eslintls"] = function(opts)
@@ -71,6 +78,24 @@ local enhance_server_opts = {
           prefer_local = "node_modules/.bin",
       }),
     }
+  end,
+  ["tsserver"] = function(opts)
+    opts.on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+      local map_opts = { noremap=true, silent=true }
+
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+
+      local ts_utils = require("nvim-lsp-ts-utils")
+      ts_utils.setup({})
+      ts_utils.setup_client(client)
+      buf_set_keymap("n", "gs", ":TSLspOrganize<CR>", map_opts)
+      buf_set_keymap("n", "gi", ":TSLspRenameFile<CR>", map_opts)
+      buf_set_keymap("n", "go", ":TSLspImportAll<CR>", map_opts)
+
+      on_attach(client, bufnr)
+    end
   end
 }
 
@@ -78,6 +103,7 @@ lsp_installer.on_server_ready(function(server)
   -- Specify the default options which we'll use to setup all servers
   local opts = {
     on_attach = on_attach,
+    capabilities = cmp_capabilites
   }
 
   if enhance_server_opts[server.name] then
@@ -87,3 +113,13 @@ lsp_installer.on_server_ready(function(server)
 
   server:setup(opts)
 end)
+
+require('null-ls').setup({
+  sources = {
+    require("null-ls").builtins.formatting.prettier.with({
+        prefer_local = "node_modules/.bin",
+    }),
+  },
+  capabilities = require('plugins-config.nvim-cmp-setup'),
+  on_attach = on_attach
+})
