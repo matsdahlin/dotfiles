@@ -1,6 +1,7 @@
 local vim = vim
 local execute = vim.api.nvim_command
 local fn = vim.fn
+
 -- ensure that packer is installed
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -22,7 +23,7 @@ return packer.startup(function(use)
     -- Dependencies
     use {'nvim-lua/plenary.nvim'}
 
-    -- Themes
+    -- Themes / highlighting
     use {'dracula/vim', as = 'dracula'}
     vim.cmd([[
       augroup DraculaOverrides
@@ -32,6 +33,8 @@ return packer.startup(function(use)
         autocmd ColorScheme dracula highlight DraculaComment cterm=italic gui=italic
       augroup end
     ]])
+
+    -- use {'sheerun/vim-polyglot'}
 
     -- LSP
     use {'jose-elias-alvarez/null-ls.nvim'}
@@ -71,12 +74,6 @@ return packer.startup(function(use)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use(require('plugins-config.telescope'))
     use(require('plugins-config.nvim-treesitter'))
-    use {
-          'kyazdani42/nvim-tree.lua',
-          requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
-          },
-          config = function() require'nvim-tree'.setup {} end
-        }
+    use(require('plugins-config.nvim-tree'))
   end
 )

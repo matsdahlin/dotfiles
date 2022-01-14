@@ -24,6 +24,9 @@ map('n', '<leader>qj', ':cnext<CR>', default_opts)
 -- toggle indentation markers
 map('n', '<leader>il', ':IndentBlanklineToggle<CR>', default_opts)
 
+-- file explorer
+map('n', '<leader>B', ':NvimTreeToggle<CR>', default_opts)
+
 -- allow gf to open non-existant files
 map('n', 'gf', ':edit <cfile><CR>', default_opts)
 

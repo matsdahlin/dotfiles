@@ -13,6 +13,7 @@ return {
     },
     ensure_installed = {
       "tsx",
+      "c_sharp",
       "json",
       "yaml",
       "vim",
