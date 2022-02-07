@@ -20,6 +20,7 @@ map('n', '<C-l>', '<C-w>l', default_opts)
 -- quick fix list
 map('n', '<leader>qk', ':cnext<CR>', default_opts)
 map('n', '<leader>qj', ':cnext<CR>', default_opts)
+map('n', '<leader>qc', ':cclose<CR>', default_opts)
 
 -- toggle indentation markers
 map('n', '<leader>il', ':IndentBlanklineToggle<CR>', default_opts)

@@ -34,6 +34,8 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.document_formatting then
       vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
+
+  -- require('lsp_signature').on_attach()
 end
 
 -- Include the servers you want to have installed by default below
@@ -70,19 +72,25 @@ local enhance_server_opts = {
     }
   end,
   ["jsonls"] = function(opts)
-    opts.settings = {
-      json = {
-        schemas = require('schemastore').json.schemas()
-      }
-    }
+    -- opts.settings = {
+    --   json = {
+    --     schemas = require('schemastore').json.schemas()
+    --   },
+    -- }
+
+    opts.on_attach = function(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+    end
   end,
-  ["null-ls"] = function(opts)
-    opts.sources = {
-      require("null-ls").builtins.formatting.prettier.with({
-          prefer_local = "node_modules/.bin",
-      }),
-    }
-  end,
+  -- null-ls can't be installed with lsp_installer yet, see config at bottom of file
+  -- ["null-ls"] = function(opts)
+  --   opts.sources = {
+  --     require("null-ls").builtins.formatting.prettier.with({
+  --         prefer_local = "node_modules/.bin",
+  --     }),
+  --   },
+  -- end,
   ["tsserver"] = function(opts)
     opts.on_attach = function(client, bufnr)
       local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end

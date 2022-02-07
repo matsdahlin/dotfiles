@@ -10,11 +10,20 @@
 #### END FIG ENV VARIABLES ####
 #
 
+# ------
+# -- Starship.rs
+# ------------
 eval "$(starship init zsh)"
 
+# ------
+# -- Language
+# ------------
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-alias ll=ls -al
-alias gc=git commit
-alias gs=git status
+# ------
+# -- Aliases
+# ------------
+alias ll="ls -al"
+alias gc="git commit"
+alias gs="git status"

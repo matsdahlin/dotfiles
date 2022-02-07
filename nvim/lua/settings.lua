@@ -18,7 +18,7 @@ set.softtabstop = 2
 set.hidden = true
 -- number column
 set.number = true
-set.relativenumber = true
+set.relativenumber = false
 set.signcolumn = 'yes:2'
 
 set.termguicolors = true
@@ -60,3 +60,16 @@ set.completeopt = {'menuone', 'noinsert', 'noselect'}
 -- set wildmode=longest:full,full
 vim.cmd [[ highlight cursorline guibg=#242633 ]]
 vim.cmd [[ highlight cursorlinenr guibg=#242633 ]]
+
+local signs = {
+        Error = "",
+        Warn = "",
+        Hint = "",
+        Info = "",
+    }
+
+for type, icon in pairs(signs) do
+
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end

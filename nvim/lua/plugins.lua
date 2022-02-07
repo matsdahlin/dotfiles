@@ -34,9 +34,10 @@ return packer.startup(function(use)
       augroup end
     ]])
 
-    -- use {'sheerun/vim-polyglot'}
+    use {'sheerun/vim-polyglot'}
 
     -- LSP
+    -- use {'ray-x/lsp_signature.nvim'}
     use {'jose-elias-alvarez/null-ls.nvim'}
     use {
       'neovim/nvim-lspconfig',
@@ -48,6 +49,7 @@ return packer.startup(function(use)
 
     -- Snippets
     use {'dsznajder/vscode-es7-javascript-react-snippets'}
+    use {'OmniSharp/omnisharp-vscode'}
 
     -- Editing
     use(require('plugins-config.autopairs'))
