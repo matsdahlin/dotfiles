@@ -4,3 +4,14 @@
 #time_format = "%T"
 #utc_time_offset = "+1"
 #time_range = "10:00:00-14:00:00"
+
+[custom.git_scope]
+command = '''
+printf "%s" \
+  "$(if [ -n "$GIT_AUTHOR_EMAIL" ]; then echo "$GIT_AUTHOR_EMAIL"; else git config user.email; fi)" \
+'''
+description = 'The currently configured Git user.{email,name}'
+format = 'as [$output]($style) '
+shell = ["dash"]
+style = 'purple bold'
+when = 'git rev-parse --is-inside-work-tree'
