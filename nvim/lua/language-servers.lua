@@ -108,6 +108,9 @@ local enhance_server_opts = {
 
       on_attach(client, bufnr)
     end
+  end,
+  ["emmet_ls"] = function(opts)
+    opts.filetypes = { "html", "css", "typescriptreact", "javascriptreact" }
   end
 }
 
