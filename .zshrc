@@ -1,13 +1,7 @@
+# Fig pre block. Keep at the top of this file.
+export PATH="${PATH}:${HOME}/.local/bin"
+eval "$(fig init zsh pre)"
 
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
 #
 
 # ------
@@ -16,7 +10,6 @@
 export NVM_DIR="$HOME/.nvm"
     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
     [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
 
 # ------
 # -- Starship.rs
@@ -35,3 +28,7 @@ export LC_ALL=en_US.UTF-8
 alias ll="ls -al"
 alias gc="git commit"
 alias gs="git status"
+
+# Fig post block. Keep at the bottom of this file.
+eval "$(fig init zsh post)"
+
