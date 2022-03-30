@@ -17,8 +17,14 @@ map('n', '<C-j>', '<C-w>j', default_opts)
 map('n', '<C-k>', '<C-w>k', default_opts)
 map('n', '<C-l>', '<C-w>l', default_opts)
 
+-- resize splits
+map('n', '<leader>wh', '<C-w>10<', default_opts)
+map('n', '<leader>wl', '<C-w>10>', default_opts)
+map('n', '<leader>wk', '<C-w>+', default_opts)
+map('n', '<leader>wj', '<C-w>-', default_opts)
+
 -- quick fix list
-map('n', '<leader>qk', ':cnext<CR>', default_opts)
+map('n', '<leader>qk', ':cprev<CR>', default_opts)
 map('n', '<leader>qj', ':cnext<CR>', default_opts)
 map('n', '<leader>qc', ':cclose<CR>', default_opts)
 
