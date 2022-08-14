@@ -6,11 +6,12 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -32,7 +33,7 @@ local on_attach = function(client, bufnr)
 
 
   if client.resolved_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
   end
 
   -- require('lsp_signature').on_attach()
@@ -94,7 +95,8 @@ local enhance_server_opts = {
   ["tsserver"] = function(opts)
     opts.on_attach = function(client, bufnr)
       local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-      local map_opts = { noremap=true, silent=true }
+
+      local map_opts = { noremap = true, silent = true }
 
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
@@ -132,7 +134,7 @@ end)
 require('null-ls').setup({
   sources = {
     require("null-ls").builtins.formatting.prettier.with({
-        prefer_local = "node_modules/.bin",
+      prefer_local = "node_modules/.bin",
     }),
   },
   capabilities = require('plugins-config.nvim-cmp-setup'),
